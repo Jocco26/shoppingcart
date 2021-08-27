@@ -13,8 +13,10 @@ class CreateOrderProductTable extends Migration
      */
     public function up()
     {
-        Schema::table('order_product', function (Blueprint $table) {
-            //
+        Schema::create('order_product', function (Blueprint $table) {
+            $table->integer('order_id');
+            $table->integer('product_id');
+            $table->string('quantity')->default(1);
         });
     }
 
@@ -25,8 +27,6 @@ class CreateOrderProductTable extends Migration
      */
     public function down()
     {
-        Schema::table('order_product', function (Blueprint $table) {
-            //
-        });
+     Schema::dropIfExist('order_product');
     }
 }
